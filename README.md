@@ -1,12 +1,12 @@
-[![Build Status](https://travis-ci.org/FRED-2/OptiType.svg?branch=master)](https://travis-ci.org/FRED-2/OptiType)
-OptiType
+OptiType - Docker
 ========
 
 Precision HLA typing from next-generation sequencing data
 
-Authors: András Szolek, Benjamin Schubert, Christopher Mohr  
-Date: April 2014  
-Version: 1.3.5.p  
+Authors: András Szolek, Benjamin Schubert, Christopher Mohr
+Docker Update: pzweuj
+Date: November 2024  
+Version: 1.3.5.p
 License: OptiType is released under a three-clause BSD license
 
 
@@ -16,83 +16,18 @@ OptiType is a novel HLA genotyping algorithm based on integer linear
 programming, capable of producing accurate 4-digit HLA genotyping predictions
 from NGS data by simultaneously selecting all major and minor HLA Class I alleles.
 
-
-Requirements
--------------
-OptiType uses the following software and libraries:
-
-1. [Python 3](https://www.python.org/)
-2. [RazerS 3.4](http://www.seqan.de/projects/razers/)
-3. [SAMtools 1.2](http://www.htslib.org/)
-4. [HDF5 1.8.15](https://www.hdfgroup.org/HDF5/)
-5. ([GLPK](https://www.gnu.org/software/glpk/)
-
-And the following Python modules:
-
-1. NumPy 1.9.3
-2. Pyomo 4.2
-3. PyTables 3.2.2
-4. Pandas 0.16.2
-5. Pysam 0.8.3
-6. Matplotlib 1.4.3
+[Original OptiType](https://github.com/FRED-2/OptiType)
 
 Installation via Docker
 -----------------------
 
 1. Install Docker on your computer and make sure it works.
 
-2. Call `docker pull fred2/optitype` which will download the Docker image.
+2. Call `docker pull ghcr.io/pzweuj/optitype:v1.3.5.p` which will download the Docker image.
 
 3. You can use the image as followes:
 
-`docker run -v /path/to/data/folder:/data/ -t fred2/optitype -i input1 [input2] (-r|-d) -o /data/`
-
-OptiType uses the CBC-Solver and RazerS3 internally with one thread if no other configuration file is provided. RazerS3's binary can be found at `/usr/local/bin` within the Docker image. 
-
-Installation from Source
-------------------------
-1. Install all required software and libraries from the first list.
-
-2. Include SAMtools and your ILP solver in your `PATH` environment variable.
-They both have to be globally accessible every time you run OptiType, so make
-them permanent (put in in your `.bashrc` or similar shell startup script).
-
-3. Add HDF5's `lib` directory to your `LD_LIBRARY_PATH`. Make sure it's
-permanent too.
-
-4. Create and activate a Python virtual environment with the package
-[virtualenv](https://virtualenv.pypa.io/en/latest/). This will automatically
-install the package manager `pip` which you will need for the next steps.
-Always run OptiType from this virtual environment.
-
-5. Install NumPy, Pyomo, Pysam and Matplotlib with
-the following commands:
-
-    ```
-    pip install numpy
-    pip install pyomo
-    pip install pysam
-    pip install matplotlib
-    ```
-
-6. Create a new environment variable containing the path to your HDF5
-installation. It doesn't have to be permanent, but it has to be accessible
-when you install PyTables. On the bash shell it would be
-`export HDF5_DIR=/path/to/hdf5-1.8.15`
-
-7. Install PyTables, Pandas and Future with
-
-    ```
-    pip install tables
-    pip install pandas
-    pip install future
-    ```
-
-8. Create a configuration file following `config.ini.example`. You will find
-all necessary instructions in there. OptiType will look for the configuration
-file at `config.ini` in the same directory by default, but you can put it
-anywhere and pass it with the `-c` option when running OptiType.
-
+`docker run -v /path/to/data/folder:/data/ -t ghcr.io/pzweuj/optitype:v1.3.5.p -i input1 [input2] (-r|-d) -o /data/`
 
 Usage
 -------------
@@ -189,16 +124,6 @@ RNA data (paired end):
 ```
 python OptiTypePipeline.py -i ./test/rna/CRC_81_N_1_fished.fastq ./test/rna/CRC_81_N_2_fished.fastq --rna -v -o ./test/rna/
 ```
-
-Contact
--------------
-András Szolek  
-szolek@informatik.uni-tuebingen.de  
-University of Tübingen, Applied Bioinformatics,  
-Center for Bioinformatics, Quantitative Biology Center,  
-and Dept. of Computer Science,  
-Sand 14, 72076 Tübingen, Germany
-
 
 Reference
 -------------
