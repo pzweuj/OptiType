@@ -6,7 +6,7 @@ Precision HLA typing from next-generation sequencing data
 
 Authors: András Szolek, Benjamin Schubert, Christopher Mohr  
 Date: April 2014  
-Version: 1.3.3  
+Version: 1.3.5.p  
 License: OptiType is released under a three-clause BSD license
 
 
@@ -21,13 +21,11 @@ Requirements
 -------------
 OptiType uses the following software and libraries:
 
-1. [Python 2.7](https://www.python.org/)
+1. [Python 3](https://www.python.org/)
 2. [RazerS 3.4](http://www.seqan.de/projects/razers/)
 3. [SAMtools 1.2](http://www.htslib.org/)
 4. [HDF5 1.8.15](https://www.hdfgroup.org/HDF5/)
-5. [CPLEX 12.5](http://www-01.ibm.com/software/commerce/optimization/cplex-optimizer/)
-   or other Pyomo-supported ILP solver ([GLPK](https://www.gnu.org/software/glpk/), 
-   [CBC](https://projects.coin-or.org/Cbc), ...)
+5. ([GLPK](https://www.gnu.org/software/glpk/)
 
 And the following Python modules:
 
@@ -37,10 +35,6 @@ And the following Python modules:
 4. Pandas 0.16.2
 5. Pysam 0.8.3
 6. Matplotlib 1.4.3
-7. Future 0.15.2
-
-Note: CPLEX has a proprietary license but is free for academic use. See IBM's
-[academic initiative.](http://www-304.ibm.com/ibm/university/academic/pub/page/academic_initiative)
 
 Installation via Docker
 -----------------------
