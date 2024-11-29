@@ -4,9 +4,13 @@ OptiType - Docker
 Precision HLA typing from next-generation sequencing data
 
 Authors: András Szolek, Benjamin Schubert, Christopher Mohr
+
 Docker Update: pzweuj
+
 Date: November 2024  
+
 Version: 1.3.5.p
+
 License: OptiType is released under a three-clause BSD license
 
 
