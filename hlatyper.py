@@ -239,16 +239,31 @@ def create_allele_dataframes(imgt_dat, fasta_gen, fasta_nuc):
 
     for allele in alleles.values():
         allele_type = allele.description.replace('HLA-', '').split(',')[0]
-        table.loc[allele.id]['id'] = allele.id
-        table.loc[allele.id]['type'] = allele_type
-        table.loc[allele.id]['4digit'] = ':'.join(allele_type.split(':')[:2])
-        table.loc[allele.id]['locus'] = allele_type.split('*')[0]
-        table.loc[allele.id]['flags'] = 0 if allele_type[-1].isdigit() else 1
-        table.loc[allele.id]['len_dat'] = len(str(allele.seq))
-        table.loc[allele.id]['len_gen'] = 0
-        table.loc[allele.id]['len_nuc'] = 0
-        table.loc[allele.id]['full_gen'] = 0
-        table.loc[allele.id]['full_nuc'] = 0
+
+        row_data = {
+            'id': allele.id,
+            'type': allele_type,
+            '4digit': ':'.join(allele_type.split(':')[:2]),
+            'locus': allele_type.split('*')[0],
+            'flags': 0 if allele_type[-1].isdigit() else 1,
+            'len_dat': len(str(allele.seq)),
+            'len_gen': 0,
+            'len_nuc': 0,
+            'full_gen': 0,
+            'full_nuc': 0
+        }
+
+        table.loc[allele.id] = row_data
+        # table.loc[allele.id]['id'] = allele.id
+        # table.loc[allele.id]['type'] = allele_type
+        # table.loc[allele.id]['4digit'] = ':'.join(allele_type.split(':')[:2])
+        # table.loc[allele.id]['locus'] = allele_type.split('*')[0]
+        # table.loc[allele.id]['flags'] = 0 if allele_type[-1].isdigit() else 1
+        # table.loc[allele.id]['len_dat'] = len(str(allele.seq))
+        # table.loc[allele.id]['len_gen'] = 0
+        # table.loc[allele.id]['len_nuc'] = 0
+        # table.loc[allele.id]['full_gen'] = 0
+        # table.loc[allele.id]['full_nuc'] = 0
         sequences.append((allele.id, 'dat', str(allele.seq)))
 
         features = [f for f in allele.features if f.type in ('exon', 'intron', 'UTR')]
