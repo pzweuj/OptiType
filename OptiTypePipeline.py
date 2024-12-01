@@ -9,41 +9,8 @@ OptiType: precision HLA typing from next-generation sequencing data
 
 Authors: András Szolek, Benjamin Schubert, Christopher Mohr
 Date: August 2017
-Version: 1.3.1
+Version: 1.3.5
 License: OptiType is released under a three-clause BSD license
-
-
-Introduction:
--------------
-OptiType, is a novel HLA genotyping algorithm based on integer linear
-programming, capable of producing accurate 4-digit HLA genotyping predictions
-from NGS data by simultaneously selecting all minor and major HLA-I alleles.
-
-
-Requirements:
--------------
-OptiType uses the following software and libraries:
-1) Python 3
-2) Biopython 1.63
-3) Pyomo 4.1
-4) Matplotlib 1.3.1
-5) Pandas 0.12 (with HDF5 support)
-6) HDF5 1.8.11
-7) RazerS 3.1
-8) Cplex 12.5
-
-Please make sure you have installed said software/libraries
-and their dependencies.
-
-
-Installation:
--------------
-First install all required software and libraries and register the static path
-in the configuration file for RazerS 3.1. CPLEX should be globally executable
-via command line. Alternative ILP solver supported by Cooper are also usable.
-Please do not change the folder structure or make sure you changed the necessary
-entries in the config file.
-
 
 Usage:
 -------------
@@ -206,7 +173,8 @@ if __name__ == '__main__':
     parser.add_argument('--razers3', 
                         type=str, 
                         required=True, 
-                        help="Absolute path to RazerS3 binary.")
+                        help="Absolute path to RazerS3 binary.",
+		       default="/usr/local/bin/razers3")
     parser.add_argument('--mapping_threads', 
                         type=int, 
                         default=16, 
@@ -214,11 +182,11 @@ if __name__ == '__main__':
     parser.add_argument('--ilp_threads', 
                         type=int, 
                         default=1, 
-                        help="Number of threads for ILP solver.")
+                        help="Number of threads for ILP solver, default=1")
     parser.add_argument('--solver', 
                         type=str, 
                         default='glpk', 
-                        help="A Pyomo-supported ILP solver.")
+                        help="A Pyomo-supported ILP solver, default=glpk")
     parser.add_argument('--deletebam', 
                         type=bool, 
                         default=True, 
