@@ -376,7 +376,8 @@ def prune_overshadowed_alleles(binary_mtx):
     diagonal = pd.Series([covariance[ii][ii] for ii in covariance.columns], index=covariance.columns)
     new_covariance = covariance[covariance.columns]
     for ii in new_covariance.columns:
-        new_covariance[ii][ii] = 0
+        # new_covariance[ii][ii] = 0
+        new_covariance.loc[ii, ii] = 0
     overshadowed = []
     for ii in new_covariance.columns:
         potential_superiors = new_covariance[ii][new_covariance[ii] == diagonal[ii]].index
