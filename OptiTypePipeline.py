@@ -172,7 +172,6 @@ if __name__ == '__main__':
                       )
     parser.add_argument('--razers3', 
                         type=str, 
-                        required=True, 
                         help="Absolute path to RazerS3 binary. default=/usr/local/bin/razers3", default="/usr/local/bin/razers3")
     parser.add_argument('--mapping_threads', 
                         type=int, 
