@@ -27,11 +27,11 @@ Installation via Docker
 
 1. Install Docker on your computer and make sure it works.
 
-2. Call `docker pull ghcr.io/pzweuj/optitype:v1.3.5.p` which will download the Docker image.
+2. Call `docker pull ghcr.io/pzweuj/optitype:v1.3.5.p1 which will download the Docker image.
 
 3. You can use the image as followes:
 
-`docker run -v /path/to/data/folder:/data/ -t ghcr.io/pzweuj/optitype:v1.3.5.p -i input1 [input2] (-r|-d) -o /data/`
+`docker run -v /path/to/data/folder:/data/ -t ghcr.io/pzweuj/optitype:v1.3.5.p1 -i input1 [input2] (-r|-d) -o /data/`
 
 Usage
 -------------
