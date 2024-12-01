@@ -66,9 +66,9 @@ class OptiType(object):
 
         L = list(itertools.chain(*list(loci.values())))
         reconst = {allele_id: 0.01 for allele_id in L if '_' in allele_id}
-        R = set([r for (r, _) in list(cov.keys())])
+        R = sorted(list({r for (r, _) in list(cov.keys())}))
         model.L = Set(initialize=L)
-        model.R = Set(initialize=R)
+        model.R = Set(initialize=R, ordered=True)
 
         # init Params
         model.cov = Param(model.R, model.L, initialize=lambda model, r, a: cov.get((r, a), 0))
@@ -142,7 +142,7 @@ class OptiType(object):
         if self.__changed or self.__ks != ks:
             self.__ks = ks
             for k in range(ks):
-                self.__instance.preprocess()
+                # self.__instance.preprocess()
                 try:
                     res = self.__solver.solve(self.__instance, options=self.__opts, tee=self.__verbosity)
                 except Exception as e:
@@ -236,7 +236,7 @@ class OptiType(object):
         d = defaultdict(list)
 
         for _ in range(ks):
-            inst.preprocess()
+            # inst.preprocess()
             try:
                 res = self.__solver.solve(inst, options=self.__opts, tee=self.__verbosity)
             except Exception as e:
