@@ -9,7 +9,7 @@ Docker Update: pzweuj
 
 Date: November 2024  
 
-Version: 1.3.5.p
+Version: 1.3.5.p1
 
 License: OptiType is released under a three-clause BSD license
 
@@ -106,10 +106,6 @@ optional arguments:
                         Path to config file. Default: config.ini in the same
                         directory as this script
 ```
-
-Furthermore, depending on your settings in `config.ini` you can choose to keep
-the bam files OptiType produces when all-mapping reads against the reference:
-these will be stored in the output directory of your current run.
 
 Then, if you want to re-run OptiType on the same sample, you can give it those
 intermediate `.bam` files as input instead of `.fastq` files, and spare on the
